@@ -29,3 +29,7 @@ Ou avec le CLI de Symfony
 symfony new bucket-list # ou symfony new --webapp bucket-list
 ```
 
+2. Créer un controller
+```shell
+php bin/console make:controller
+```
