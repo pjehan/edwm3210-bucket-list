@@ -6,6 +6,7 @@
 2. Installer les dépendances
 ```shell
 composer install
+php bin/console importmap:install
 ```
 3. Démarrer le serveur de développement (si vous n'avez pas de serveur local (ex: Apache))
 ```shell
