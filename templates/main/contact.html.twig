@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}{{ parent() }} - Contact{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>console.log('C\'est la page contact')</script>
+{% endblock %}
 
 {% block body %}
     <h1>Page contact</h1>
