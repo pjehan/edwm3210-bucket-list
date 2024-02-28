@@ -12,7 +12,7 @@ php bin/console importmap:install
 ```shell
 php -S localhost:8000 -t public
 ```
-Ou avec le CLI de Symfony
+Ou avec le CLI de Symfony (obligatoire pour la gestion des assets avec importmap)
 ```shell
 symfony serve
 ```
