@@ -1,12 +1,35 @@
+:root {
+    --color-primary: #A5A58D;
+    --color-bg: #FFF1E6;
+    --color-bg-dark: #EDDCD2;
+}
+
 body {
     display: grid;
     grid-template-rows: auto 1fr auto;
     min-height: 100vh;
-    background-color: skyblue;
 
     > header {
-        img {
-            height: 75px;
+        background-color: var(--color-primary);
+
+        .navbar {
+            .navbar-brand {
+                img {
+                    height: 75px;
+                }
+            }
+
+            .navbar-nav {
+                .nav-item {
+                    .nav-link {
+                        color: white;
+                    }
+                }
+            }
         }
+    }
+
+    > footer {
+        background-color: var(--color-bg-dark);
     }
 }
