@@ -14,6 +14,7 @@ php bin/console importmap:install
 ```shell
 php bin/console doctrine:database:create
 php bin/console doctrine:migrations:migrate
+php bin/console doctrine:fixtures:load
 ```
 
 En cas de problème avec les migrations, supprimer les fichiers de migrations puis exécuter les commandes suivantes :
@@ -60,4 +61,11 @@ php bin/console make:entity
 ```shell
 php bin/console make:migration
 php bin/console doctrine:migrations:migrate
+```
+
+5. Créer des fixtures
+```shell
+composer require --dev orm-fixtures
+php bin/console make:fixtures
+php bin/console doctrine:fixtures:load
 ```
