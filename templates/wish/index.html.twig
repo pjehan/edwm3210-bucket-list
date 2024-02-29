@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des souhaits{% endblock %}
+
+{% block body %}
+    <h1>Liste des souhaits</h1>
+
+    <ul>
+        {% for wish in wishes %}
+            <li>
+                <h2>{{ wish.title }}</h2>
+                <p>Auteur : {{ wish.author }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
