@@ -10,6 +10,7 @@
             <li>
                 <h2>{{ wish.title }}</h2>
                 <p>Auteur : {{ wish.author }}</p>
+                <a href="{{ path('app_wish_show', {'id': wish.id}) }}" class="btn btn-primary">Voir le détail</a>
             </li>
         {% endfor %}
     </ul>
