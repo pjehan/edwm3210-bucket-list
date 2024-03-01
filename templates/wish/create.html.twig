@@ -6,10 +6,6 @@
 
     <h1>Ajouter un souhait</h1>
 
-    {{ form_start(formWish) }}
-        {{ form_row(formWish) }}
-
-        <button type="submit" class="btn btn-success">Envoyer</button>
-    {{ form_end(formWish) }}
+    {% include 'wish/_form.html.twig' %}
 
 {% endblock %}

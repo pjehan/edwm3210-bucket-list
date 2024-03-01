@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier un souhait{% endblock %}
+
+{% block body %}
+
+    <h1>Modifier {{ wish.title }}</h1>
+
+    {% include 'wish/_form.html.twig' with {'btnLabel': 'Modifier'} %}
+
+{% endblock %}

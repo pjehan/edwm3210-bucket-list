@@ -52,4 +52,25 @@ class WishController extends AbstractController
             'formWish' => $form
         ]);
     }
+
+    #[Route('/edit/{id}', name: 'app_wish_edit')]
+    public function edit(Wish $wish, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $form = $this->createForm(WishType::class, $wish);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($wish);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Votre souhait est bien modifié');
+
+            return $this->redirectToRoute('app_wish');
+        }
+
+        return $this->render('wish/edit.html.twig', [
+            'wish' => $wish,
+            'formWish' => $form
+        ]);
+    }
 }
