@@ -1,0 +1,28 @@
+<header class="position-sticky top-0 mb-3 shadow-sm">
+    <nav class="navbar navbar-expand">
+        <div class="container">
+            <a href="{{ path('app_home') }}" class="navbar-brand">
+                <img src="{{ asset('images/logo.svg') }}" alt="Bucket List">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a href="{{ path('app_home') }}" class="nav-link">Accueil</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_wish') }}" class="nav-link">Souhaits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_wish_create') }}" class="nav-link">Ajouter souhait</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('app_contact') }}" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
