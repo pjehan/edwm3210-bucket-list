@@ -26,6 +26,7 @@ class WishType extends AbstractType
                 'multiple' => false,
                 'expanded' => false,
             ])
+            ->add('tags', null, ['choice_label' => 'name'])
             ->add('description')
             ->add('author', null, ['label' => 'Auteur'])
             // ->add('submit', SubmitType::class)
