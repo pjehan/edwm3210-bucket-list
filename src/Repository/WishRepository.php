@@ -28,7 +28,9 @@ class WishRepository extends ServiceEntityRepository
         $qb = $this->createQueryBuilder('wish');
 
         $qb->addSelect('category')
+            ->addSelect('tag')
             ->join('wish.category', 'category')
+            ->leftJoin('wish.tags', 'tag')
             ->where($qb->expr()->eq('wish.isPublished', true))
             //->where('wish.isPublished = true')
             ->orderBy('wish.createdAt', 'DESC')

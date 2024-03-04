@@ -1,0 +1,11 @@
+<p>Auteur : {{ wish.author }}</p>
+<p>
+    <span class="badge text-bg-primary">
+        {{ wish.category.name }}
+    </span>
+    {% for tag in wish.tags %}
+        <span class="badge text-bg-secondary">
+            {{ tag.name }}
+        </span>
+    {% endfor %}
+</p>
