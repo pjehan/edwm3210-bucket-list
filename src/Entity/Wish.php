@@ -38,7 +38,7 @@ class Wish
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
-    #[ORM\ManyToMany(targetEntity: Tag::class, mappedBy: 'wishes')]
+    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'wishes')]
     private Collection $tags;
 
     public function __construct()

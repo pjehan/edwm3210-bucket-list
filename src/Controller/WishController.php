@@ -40,10 +40,6 @@ class WishController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            foreach ($wish->getTags() as $tag) {
-                $tag->addWish($wish);
-                $entityManager->persist($tag);
-            }
             $entityManager->persist($wish);
             $entityManager->flush();
 
@@ -64,10 +60,6 @@ class WishController extends AbstractController
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            foreach ($wish->getTags() as $tag) {
-                $tag->addWish($wish);
-                $entityManager->persist($tag);
-            }
             $entityManager->persist($wish);
             $entityManager->flush();
 

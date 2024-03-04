@@ -18,7 +18,7 @@ class Tag
     #[ORM\Column(length: 50)]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Wish::class, inversedBy: 'tags')]
+    #[ORM\ManyToMany(targetEntity: Wish::class, mappedBy: 'tags')]
     private Collection $wishes;
 
     public function __construct()
