@@ -19,6 +19,8 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
         $wish1->setIsPublished(true);
         $wish1->setCreatedAt(new \DateTimeImmutable('2024-01-01 12:00:00'));
         $wish1->setCategory($this->getReference('category_travel_and_adventure'));
+        $wish1->addTag($this->getReference('tag_airplane'));
+        $wish1->addTag($this->getReference('tag_parachute'));
         $manager->persist($wish1);
 
         $wish2 = new Wish();
@@ -36,6 +38,7 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
         $wish3->setIsPublished(true);
         $wish3->setCreatedAt(new \DateTimeImmutable('2024-01-02 09:30:00'));
         $wish3->setCategory($this->getReference('category_entertainment'));
+        $wish3->addTag($this->getReference('tag_guitar'));
         $manager->persist($wish3);
 
         $wish4 = new Wish();
@@ -54,6 +57,7 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CategoryFixtures::class,
+            TagFixtures::class
         ];
     }
 }
