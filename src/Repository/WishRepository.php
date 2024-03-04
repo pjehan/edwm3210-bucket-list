@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Wish;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @extends ServiceEntityRepository<Wish>
@@ -23,7 +24,18 @@ class WishRepository extends ServiceEntityRepository
 
     public function findLastWishes(int $limit = 10): array
     {
-        return $this->findBy(['isPublished' => true], ['createdAt' => 'DESC'], $limit);
+        // return $this->findBy(['isPublished' => true], ['createdAt' => 'DESC'], $limit);
+        $qb = $this->createQueryBuilder('wish');
+
+        $qb->addSelect('category')
+            ->join('wish.category', 'category')
+            ->where($qb->expr()->eq('wish.isPublished', true))
+            //->where('wish.isPublished = true')
+            ->orderBy('wish.createdAt', 'DESC')
+            ->setMaxResults($limit)
+        ;
+
+        return $qb->getQuery()->getResult();
     }
 
     //    /**
