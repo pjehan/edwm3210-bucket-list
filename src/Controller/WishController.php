@@ -39,6 +39,7 @@ class WishController extends AbstractController
     {
         // $this->denyAccessUnlessGranted('ROLE_USER');
         $wish = new Wish();
+        $wish->setAuthor($this->getUser());
         $form = $this->createForm(WishType::class, $wish);
 
         $form->handleRequest($request);

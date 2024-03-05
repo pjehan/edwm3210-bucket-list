@@ -24,10 +24,6 @@ class Wish
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $description = null;
 
-    #[Assert\NotBlank(message: 'Cette valeur ne peut pas être vide')]
-    #[ORM\Column(length: 50)]
-    private ?string $author = null;
-
     #[ORM\Column]
     private ?bool $isPublished = true;
 
@@ -40,6 +36,10 @@ class Wish
 
     #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'wishes')]
     private Collection $tags;
+
+    #[ORM\ManyToOne(inversedBy: 'wishes')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $author = null;
 
     public function __construct()
     {
@@ -72,18 +72,6 @@ class Wish
     public function setDescription(?string $description): static
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(string $author): static
-    {
-        $this->author = $author;
 
         return $this;
     }
@@ -147,6 +135,18 @@ class Wish
         if ($this->tags->removeElement($tag)) {
             $tag->removeWish($this);
         }
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): static
+    {
+        $this->author = $author;
 
         return $this;
     }

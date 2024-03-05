@@ -23,6 +23,7 @@ class UserFixtures extends Fixture
         $admin->setPassword($this->passwordHasher->hashPassword($admin, '1234'));
         $admin->setIsVerified(true);
         $manager->persist($admin);
+        $this->addReference('user_pierre', $admin);
 
         $john = new User();
         $john->setUsername('john');
@@ -31,6 +32,7 @@ class UserFixtures extends Fixture
         $john->setPassword($this->passwordHasher->hashPassword($john, '1234'));
         $john->setIsVerified(true);
         $manager->persist($john);
+        $this->addReference('user_john', $john);
 
         $jane = new User();
         $jane->setUsername('jane');
@@ -38,6 +40,7 @@ class UserFixtures extends Fixture
         $jane->setPassword($this->passwordHasher->hashPassword($jane, '1234'));
         $jane->setIsVerified(true);
         $manager->persist($jane);
+        $this->addReference('user_jane', $jane);
 
         $manager->flush();
     }

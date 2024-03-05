@@ -15,7 +15,7 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
         $wish1 = new Wish();
         $wish1->setTitle('Saut en parachute');
         $wish1->setDescription('Faire un saut en parachute au moins une fois dans sa vie');
-        $wish1->setAuthor('John Doe');
+        $wish1->setAuthor($this->getReference('user_pierre'));
         $wish1->setIsPublished(true);
         $wish1->setCreatedAt(new \DateTimeImmutable('2024-01-01 12:00:00'));
         $wish1->setCategory($this->getReference('category_travel_and_adventure'));
@@ -25,7 +25,7 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
 
         $wish2 = new Wish();
         $wish2->setTitle('Aller à la montagne');
-        $wish2->setAuthor('John Doe');
+        $wish2->setAuthor($this->getReference('user_john'));
         $wish2->setIsPublished(true);
         $wish2->setCreatedAt(new \DateTimeImmutable('2024-01-02 12:00:00'));
         $wish2->setCategory($this->getReference('category_travel_and_adventure'));
@@ -34,7 +34,7 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
         $wish3 = new Wish();
         $wish3->setTitle('Apprendre à jouer de la guitare');
         $wish3->setDescription('Pour pouvoir enfin jouer "Hotel California" à la guitare');
-        $wish3->setAuthor('Pierre Jehan');
+        $wish3->setAuthor($this->getReference('user_pierre'));
         $wish3->setIsPublished(true);
         $wish3->setCreatedAt(new \DateTimeImmutable('2024-01-02 09:30:00'));
         $wish3->setCategory($this->getReference('category_entertainment'));
@@ -44,7 +44,7 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
         $wish4 = new Wish();
         $wish4->setTitle('Partir en vacances');
         $wish4->setDescription('Partir en vacances au moins une fois par an');
-        $wish4->setAuthor('Pierre Jehan');
+        $wish4->setAuthor($this->getReference('user_pierre'));
         $wish4->setIsPublished(false);
         $wish4->setCreatedAt(new \DateTimeImmutable('2024-01-03 12:00:00'));
         $wish4->setCategory($this->getReference('category_travel_and_adventure'));
@@ -57,7 +57,8 @@ class WishFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             CategoryFixtures::class,
-            TagFixtures::class
+            TagFixtures::class,
+            UserFixtures::class
         ];
     }
 }

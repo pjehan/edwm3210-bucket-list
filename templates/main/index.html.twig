@@ -10,4 +10,15 @@
         {% endif %}
         ! ✅
     </h1>
+
+    {% if app.user %}
+        <ul>
+            {% for wish in app.user.wishes|filter(wish => wish.isPublished) %}
+                <li>
+                    {% include 'wish/_card.html.twig' with {'wish': wish} only %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
 {% endblock %}

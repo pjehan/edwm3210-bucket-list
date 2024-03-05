@@ -8,10 +8,7 @@
     <ul>
         {% for wish in wishes %}
             <li>
-                <h2>{{ wish.title }}</h2>
-                {% include 'wish/_metadata.html.twig' with {'wish': wish} only %}
-                <a href="{{ path('app_wish_show', {'id': wish.id}) }}" class="btn btn-primary">Voir le détail</a>
-                <a href="{{ path('app_wish_edit', {'id': wish.id}) }}" class="btn btn-warning">Modifier</a>
+                {% include 'wish/_card.html.twig' with {'wish': wish} only %}
             </li>
         {% endfor %}
     </ul>
