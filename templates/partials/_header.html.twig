@@ -15,9 +15,11 @@
                     <li class="nav-item">
                         <a href="{{ path('app_wish') }}" class="nav-link">Souhaits</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ path('app_wish_create') }}" class="nav-link">Ajouter souhait</a>
-                    </li>
+                    {% if app.user %}
+                        <li class="nav-item">
+                            <a href="{{ path('app_wish_create') }}" class="nav-link">Ajouter souhait</a>
+                        </li>
+                    {% endif %}
                     <li class="nav-item">
                         <a href="{{ path('app_contact') }}" class="nav-link">Contact</a>
                     </li>
@@ -28,6 +30,9 @@
                     {% else %}
                         <li class="nav-item">
                             <a href="{{ path('app_login') }}" class="nav-link">Connexion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ path('app_register') }}" class="nav-link">Inscription</a>
                         </li>
                     {% endif %}
                 </ul>

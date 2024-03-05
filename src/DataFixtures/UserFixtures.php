@@ -21,6 +21,7 @@ class UserFixtures extends Fixture
         $admin->setEmail('pierre.jehan@gmail.com');
         $admin->setRoles(['ROLE_ADMIN']);
         $admin->setPassword($this->passwordHasher->hashPassword($admin, '1234'));
+        $admin->setIsVerified(true);
         $manager->persist($admin);
 
         $john = new User();
@@ -28,12 +29,14 @@ class UserFixtures extends Fixture
         $john->setEmail('john.doe@gmail.com');
         // $john->setRoles(['ROLE_USER']);
         $john->setPassword($this->passwordHasher->hashPassword($john, '1234'));
+        $john->setIsVerified(true);
         $manager->persist($john);
 
         $jane = new User();
         $jane->setUsername('jane');
         $jane->setEmail('jane.doe@gmail.com');
         $jane->setPassword($this->passwordHasher->hashPassword($jane, '1234'));
+        $jane->setIsVerified(true);
         $manager->persist($jane);
 
         $manager->flush();
