@@ -6,6 +6,11 @@
     <h1>{{ wish.title }}</h1>
     <p>Ajouté le {{ wish.createdAt|date('d/m/Y') }}</p>
     {% include 'wish/_metadata.html.twig' with {'wish': wish} only %}
+
+    {% if wish.image %}
+        <img src="{{ asset('uploads/' ~ wish.image) }}" alt="{{ wish.title }}">
+    {% endif %}
+
     <p>{{ wish.description }}</p>
 {% endblock %}
 
