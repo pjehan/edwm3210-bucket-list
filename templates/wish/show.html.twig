@@ -11,6 +11,6 @@
         <img src="{{ asset('uploads/' ~ wish.image) }}" alt="{{ wish.title }}">
     {% endif %}
 
-    <p>{{ wish.description }}</p>
+    <p>{{ wish.description|raw }}</p>
 {% endblock %}
 
