@@ -27,14 +27,6 @@ class WishController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_wish_show', requirements: ['id' => '\d+'])]
-    public function show(Wish $wish): Response
-    {
-        return $this->render('wish/show.html.twig', [
-            'wish' => $wish
-        ]);
-    }
-
     #[Route('/ajouter', name: 'app_wish_create')]
     #[IsGranted('ROLE_USER')]
     public function create(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
@@ -63,6 +55,14 @@ class WishController extends AbstractController
 
         return $this->render('wish/create.html.twig', [
             'formWish' => $form
+        ]);
+    }
+
+    #[Route('/{slug}', name: 'app_wish_show')]
+    public function show(Wish $wish): Response
+    {
+        return $this->render('wish/show.html.twig', [
+            'wish' => $wish
         ]);
     }
 
