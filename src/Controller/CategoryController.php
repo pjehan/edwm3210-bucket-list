@@ -13,7 +13,6 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/category')]
-#[IsGranted('ROLE_ADMIN')]
 class CategoryController extends AbstractController
 {
     #[Route('/', name: 'app_category_index', methods: ['GET'])]
@@ -25,6 +24,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/new', name: 'app_category_new', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $category = new Category();
@@ -53,6 +53,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_category_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function edit(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(CategoryType::class, $category);
@@ -71,6 +72,7 @@ class CategoryController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_category_delete', methods: ['POST'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function delete(Request $request, Category $category, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$category->getId(), $request->request->get('_token'))) {
@@ -79,5 +81,10 @@ class CategoryController extends AbstractController
         }
 
         return $this->redirectToRoute('app_category_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    public function showAll(CategoryRepository $categoryRepository): Response
+    {
+        return $this->render('category/_list.html.twig', ['categories' => $categoryRepository->findAll()]);
     }
 }
